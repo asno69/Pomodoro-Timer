@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pomodoro-Timer</title>
+  <link href="./resources/images/favicon.ico" rel="icon" type="image/x-icon">
+  <link href="./resources/css/style.css" rel="stylesheet">
+  <script src="./resources/js/app.js" type="module" defer></script>
+</head>
+
+<body>
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <span>Pomodoro</span>
+    </div>
+    <div class="top-actions">
+      <span class="pill" id="sequenceInfo">No tasks yet</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="layout">
+    <section class="card">
+      <div class="timer-head">
+        <div><div class="mode" id="modeLabel">Work</div></div>
+        <div class="submode" id="subLabel">Add tasks to start a sequence</div>
+      </div>
+
+      <div class="timer" id="timerText">25:00</div>
+
+      <div class="progress-wrap" aria-label="Progress">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary" id="startBtn">Start</button>
+        <button class="btn-ghost" id="pauseBtn">Pause</button>
+        <button class="btn-danger" id="resetBtn">Reset</button>
+      </div>
+
+      <div class="meta">
+        <div>Current task: <b id="currentTaskName">—</b></div>
+        <div>Break: <b><span id="breakMinutesText">5</span>m <span id="breakSecondsText">0</span>s</b></div>
+      </div>
+    </section>
+
+    <aside class="card">
+      <div class="tasks-title">
+        <h2>Tasks</h2>
+        <button class="btn-danger small-btn" id="clearAllBtn" title="Delete all tasks">Clear all</button>
+      </div>
+
+      <div class="settings">
+        <div class="setting-row">
+          <label>
+            Short break duration
+            <span style="font-weight:600;opacity:.9;">(minutes + seconds)</span>
+          </label>
+          <div class="inline-inputs">
+            <input id="breakMinInput" class="tiny" type="number" min="0" value="5" inputmode="numeric" pattern="[0-9]*" title="Break minutes">
+            <input id="breakSecInput" class="tiny" type="number" min="0" max="59" value="0" inputmode="numeric" pattern="[0-9]*" title="Break seconds">
+          </div>
+        </div>
+      </div>
+
+      <div class="form">
+        <input id="taskNameInput" type="text" placeholder="Task name (e.g. Write report)" />
+        <button class="add-btn" id="addTaskBtn">Add</button>
+      </div>
+
+      <div class="task-list" id="taskList"></div>
+    </aside>
+  </div>
+</main>
+
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+  <div class="modal">
+    <h3 id="modalTitle">Time's up</h3>
+    <p id="modalBody">Work finished.</p>
+    <div class="modal-actions">
+      <button class="ok" id="modalOkBtn">OK</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
